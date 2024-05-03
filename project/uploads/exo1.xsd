@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"> 
+    <xs:simpleType name="Typesexe">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="H"/>
+            <xs:enumeration value="F"/>
+        </xs:restriction>
+    </xs:simpleType>  
+    <xs:complexType name="personne">
+        <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string" maxOccurs="unbounded" />
+            <xs:element name="publication" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="datenaissance" type="xs:date" use="required"/>
+        <xs:attribute name="datedeces" type="xs:date" use="required"/>
+        <xs:attribute name="sexe" type="Typesexe" use="required"/>
+    </xs:complexType>
+    <xs:element name="encyclopedie">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="personne" type="personne" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
