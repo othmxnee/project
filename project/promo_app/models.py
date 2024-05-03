@@ -5,14 +5,24 @@ cours_validator = FileExtensionValidator(['ppt', 'pdf','docx'])
 mooc_validator = FileExtensionValidator(['mp4','mov','webm','avi','mkv','ogg','wmv'])
 ressource_validator = FileExtensionValidator(['rar', 'zip'])
 
-
+class Niveau (models.Model):
+    nom = models.CharField(max_length=20)
+    def __str__(self):
+        return self.nom
 
 class Promo(models.Model):
     nom = models.CharField(max_length=20)
     annee = models.CharField(max_length=10,default='2023-2024')
-    niveau = models.CharField(max_length=10,default='1cp')
+    Niveau = models.ForeignKey(Niveau,on_delete=models.CASCADE)
+    
+
     def __str__(self):
         return self.nom
+    
+class Course(models.Model):
+    nom = models.CharField(max_length=50)
+    description = models.TextField(blank=True)
+    Niveau = models.ForeignKey(Niveau,on_delete=models.CASCADE)
     
 class Module(models.Model):
     nom = models.CharField(max_length=20)

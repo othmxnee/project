@@ -1,9 +1,9 @@
 from rest_framework import generics
 
-from .models import Promo,Module,Chapitre,Mooc,Cours,Fiche,Devoir,Commentaire,Ressource
+from .models import Promo,Module,Chapitre,Mooc,Cours,Fiche,Devoir,Commentaire,Ressource,Niveau,Course
 
 
-from .serializers import PromoModelSerializer,ModuleModelSerializer,ChapitreModelSerializer,MoocModelSerializer,CoursModelSerializer,FicheModelSerializer,DevoirModelSerializer,CommentaireModelSerializer,RessourceModelSerializer
+from .serializers import PromoModelSerializer,ModuleModelSerializer,ChapitreModelSerializer,MoocModelSerializer,CoursModelSerializer,FicheModelSerializer,DevoirModelSerializer,CommentaireModelSerializer,RessourceModelSerializer,CourseModelSerializer,NiveauModelSerializer
 #Promo:
 class PromoView(generics.ListCreateAPIView):
     queryset = Promo.objects.all()
@@ -101,3 +101,25 @@ class SingleRessourceView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = RessourceModelSerializer
     def get_queryset(self):
         return Ressource.objects.filter(pk = self.kwargs['pk'])
+
+#Course:
+
+class CourseView(generics.ListCreateAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseModelSerializer
+
+class SingleCourseView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = CourseModelSerializer
+    def get_queryset(self):
+        return Course.objects.filter(pk = self.kwargs['pk'])
+
+#Niveau:
+
+class NiveauView(generics.ListCreateAPIView):
+    queryset = Niveau.objects.all()
+    serializer_class = NiveauModelSerializer
+
+class SingleNiveauView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = NiveauModelSerializer
+    def get_queryset(self):
+        return Niveau.objects.filter(pk = self.kwargs['pk'])

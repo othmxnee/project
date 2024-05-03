@@ -24,6 +24,10 @@ urlpatterns = [
     path('commentaire/<int:pk>/',views.SingleCommentaireView.as_view()),
     path('ressource/',views.RessourceView.as_view()),
     path('ressource/<int:pk>/',views.SingleRessourceView.as_view()),
+    path('niveau/',views.NiveauView.as_view()),
+    path('niveau/<int:pk>/',views.SingleNiveauView.as_view()),
+    path('course/',views.CourseView.as_view()),
+    path('course/<int:pk>/',views.SingleCourseView.as_view()),
 
 
 ]
