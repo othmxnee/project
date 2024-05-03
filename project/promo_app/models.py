@@ -25,7 +25,6 @@ class Course(models.Model):
     Niveau = models.ForeignKey(Niveau,on_delete=models.CASCADE)
     
 class Module(models.Model):
-    nom = models.CharField(max_length=20)
     promo=models.ForeignKey(
         Promo,
         on_delete=models.CASCADE,)
