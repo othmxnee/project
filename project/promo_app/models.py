@@ -11,6 +11,8 @@ class Promo(models.Model):
     nom = models.CharField(max_length=20)
     annee = models.CharField(max_length=10,default='2023-2024')
     niveau = models.CharField(max_length=10,default='1cp')
+    def __str__(self):
+        return self.nom
     
 class Module(models.Model):
     nom = models.CharField(max_length=20)
@@ -28,7 +30,7 @@ class Chapitre(models.Model):
     date_deposer = models.DateTimeField(auto_now_add=True)
     nom = models.CharField(max_length=20)
     def __str__(self):
-        return self.nom 
+        return self.nom
     
 class Mooc(models.Model):
     file = models.FileField(upload_to='uploads/',validators=[mooc_validator])
