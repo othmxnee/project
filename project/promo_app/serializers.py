@@ -1,14 +1,11 @@
 from rest_framework import serializers
-from .models import Mooc, Promo,Module,Chapitre,Fiche,Cours,Devoir,Commentaire,Ressource,Course,Niveau
+from .models import Mooc, Promo,Chapitre,Fiche,Cours,Devoir,Commentaire,Ressource,Niveau,Module
 
 class PromoModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Promo
         fields = '__all__'
-class ModuleModelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Module
-        fields = '__all__'
+
 class ChapitreModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chapitre
@@ -41,7 +38,7 @@ class NiveauModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Niveau
         fields = '__all__'
-class CourseModelSerializer(serializers.ModelSerializer):
+class ModuleModelSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Course
+        model = Module
         fields = '__all__'

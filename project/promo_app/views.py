@@ -1,9 +1,9 @@
 from rest_framework import generics
 
-from .models import Promo,Module,Chapitre,Mooc,Cours,Fiche,Devoir,Commentaire,Ressource,Niveau,Course
+from .models import Promo,Chapitre,Mooc,Cours,Fiche,Devoir,Commentaire,Ressource,Niveau,Module
 
 
-from .serializers import PromoModelSerializer,ModuleModelSerializer,ChapitreModelSerializer,MoocModelSerializer,CoursModelSerializer,FicheModelSerializer,DevoirModelSerializer,CommentaireModelSerializer,RessourceModelSerializer,CourseModelSerializer,NiveauModelSerializer
+from .serializers import PromoModelSerializer,ChapitreModelSerializer,MoocModelSerializer,CoursModelSerializer,FicheModelSerializer,DevoirModelSerializer,CommentaireModelSerializer,RessourceModelSerializer,NiveauModelSerializer,ModuleModelSerializer
 #Promo:
 class PromoView(generics.ListCreateAPIView):
     queryset = Promo.objects.all()
@@ -13,17 +13,6 @@ class SinglePromoView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PromoModelSerializer
     def get_queryset(self):
         return Promo.objects.filter(pk = self.kwargs['pk'])
-
-#Module:
-class ModuleView(generics.ListCreateAPIView):
-    queryset = Module.objects.all()
-    serializer_class = ModuleModelSerializer
-
-class SingleModuleView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ModuleModelSerializer
-    def get_queryset(self):
-        return Module.objects.filter(pk = self.kwargs['pk'])
-
 
 #chapitre:
 
@@ -102,16 +91,6 @@ class SingleRessourceView(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return Ressource.objects.filter(pk = self.kwargs['pk'])
 
-#Course:
-
-class CourseView(generics.ListCreateAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseModelSerializer
-
-class SingleCourseView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = CourseModelSerializer
-    def get_queryset(self):
-        return Course.objects.filter(pk = self.kwargs['pk'])
 
 #Niveau:
 
@@ -123,3 +102,14 @@ class SingleNiveauView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = NiveauModelSerializer
     def get_queryset(self):
         return Niveau.objects.filter(pk = self.kwargs['pk'])
+
+#Module:
+
+class ModuleView(generics.ListCreateAPIView):
+    queryset = Module.objects.all()
+    serializer_class = ModuleModelSerializer
+
+class SingleModuleView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = ModuleModelSerializer
+    def get_queryset(self):
+        return Module.objects.filter(pk = self.kwargs['pk'])

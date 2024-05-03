@@ -19,25 +19,21 @@ class Promo(models.Model):
     def __str__(self):
         return self.nom
     
-class Course(models.Model):
+class Module(models.Model):
     nom = models.CharField(max_length=50)
     description = models.TextField(blank=True)
-    Niveau = models.ForeignKey(Niveau,on_delete=models.CASCADE)
-    
-class Module(models.Model):
-    promo=models.ForeignKey(
-        Promo,
-        on_delete=models.CASCADE,)
+    Promotion = models.ForeignKey(Promo, on_delete=models.CASCADE)
     def __str__(self):
         return self.nom
+    
+
+   
 
 class Chapitre(models.Model):
-    module = models.ForeignKey(
-        Module,
-        on_delete=models.CASCADE,
-    )
+    
     date_deposer = models.DateTimeField(auto_now_add=True)
     nom = models.CharField(max_length=20)
+    Module = models.ForeignKey(Module, on_delete=models.CASCADE)
     def __str__(self):
         return self.nom
     

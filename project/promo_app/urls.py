@@ -8,8 +8,6 @@ from django.conf import settings
 urlpatterns = [
     path('promo/',views.PromoView.as_view()),
     path('promo/<int:pk>/',views.SinglePromoView.as_view()),
-    path('module/',views.ModuleView.as_view()),
-    path('module/<int:pk>/',views.SingleModuleView.as_view()),
     path('chapitre/',views.ChapitreView.as_view()),
     path('chapitre/<int:pk>/',views.SingleChapitreView.as_view()),
     path('mooc/',views.MoocView.as_view()),
@@ -26,8 +24,9 @@ urlpatterns = [
     path('ressource/<int:pk>/',views.SingleRessourceView.as_view()),
     path('niveau/',views.NiveauView.as_view()),
     path('niveau/<int:pk>/',views.SingleNiveauView.as_view()),
-    path('course/',views.CourseView.as_view()),
-    path('course/<int:pk>/',views.SingleCourseView.as_view()),
+    path('module/',views.ModuleView.as_view()),
+    path('module/<int:pk>/',views.SingleModuleView.as_view()),
+
 
 
 ]
